@@ -9,8 +9,7 @@ const Footer = () => {
       className="text-center text-dark"
       style={{
         backgroundColor: "#dddfdf",
-        position: "fixed",
-        bottom: 0,
+        
         width: "100%",
         marginTop:"80px"
       }}
