@@ -2,37 +2,330 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+/* landing page css start*/
+.bg-image {
+  position: relative;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 576px) {
+  .bg-image img {
+    height: 400px; /* Adjust this value based on your requirement */
   }
 }
+/* landing page css end */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* LoginPage */
+
+/* Base styles for the login container */
+.login {
+  width: 100%;
+  /* height: 100vh; */
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Styles for the .left and .right sections */
+.login > .left {
+  width: 100%; /* Full width on smaller screens */
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.login > .right {
+  width: 100%; /* Full width on smaller screens */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Media query for adjusting layout on smaller screens */
+@media (min-width: 768px) {
+  .login {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
   }
-  to {
-    transform: rotate(360deg);
+
+  .login > .left {
+    max-width: 50%;
+  }
+
+  .login > .right {
+    max-width: 40%;
+    height: auto; /* Allow height to adjust based on content */
+  }
+}
+
+.right>.login-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  /* align-items: start; */
+  gap: 15px ;
+}
+.mb-3{
+  width: 80%;
+}
+
+/* Register Page  */
+
+/* Base styles for the login container */
+.register {
+  width: 100%;
+  /* height: 100vh; */
+  padding: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styles for the .left and .right sections */
+.register > .left {
+  width: 100%; /* Full width on smaller screens */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.register > .right {
+  width: 100%; /* Full width on smaller screens */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Media query for adjusting layout on smaller screens */
+@media (min-width: 768px) {
+  .register {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .register > .left {
+    max-width: 50%;
+  }
+
+  .register > .right {
+    max-width: 40%;
+    height: auto; /* Allow height to adjust based on content */
+  }
+}
+.right>.register-form{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px ;
+}   
+
+.btn:hover{
+  background-color: #2e5974;
+  border: none;
+}
+
+/* ForgotPassword */
+
+.forgot{
+  width: 100%;
+  /* height: 100vh; */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.forgot>.left{
+  width: 100%; /* Full width on smaller screens */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.forgot>.right{
+  width: 100%; /* Full width on smaller screens */
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+/* Media query for adjusting layout on smaller screens */
+@media (min-width: 768px) {
+  .forgot {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  .forgot > .left {
+    max-width: 50%;
+  }
+
+  .forgot > .right {
+    max-width: 40%;
+    height: auto; /* Allow height to adjust based on content */
+  }
+}
+
+
+/* User Profile  */
+
+.userprofile{
+  width: 100%;
+  /* height: 100vh; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profile-form{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+}
+.login-main{
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* dashboard navbar */
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* dashboard navbar */
+
+
+/* dashboard sidebar */
+.sidebar-container {
+  height: 100%;
+}
+
+.sidebar-pro {
+  height: 100%;
+}
+
+.sidebar-container.open .sidebar-pro {
+  width: 250px;
+}
+
+.sidebar-container.closed .sidebar-pro {
+  width: 60px;
+}
+
+/* dashboard sidebar */
+
+
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.category-select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.category-select option {
+  padding: 10px;
+}
+
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 600px) {
+  .form-group {
+    margin-bottom: 10px;
   }
 }
