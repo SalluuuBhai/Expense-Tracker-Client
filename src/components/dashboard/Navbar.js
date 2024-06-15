@@ -5,9 +5,13 @@ import Navbar from "react-bootstrap/Navbar";
 import { LuPanelLeftClose, LuPanelRightClose } from "react-icons/lu";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
+import { useSelector } from "react-redux";
 
-function DashboardNavbar({ isOpen, toggleSidebar, userData }) {
-  const firstLetter = userData?.userName?.charAt(0).toUpperCase() || "";
+
+function DashboardNavbar({ isOpen, toggleSidebar }) {
+  const userName = useSelector((state) => state.user?.user?.userName || "");
+  const firstLetter = userName?.charAt(0).toUpperCase() || "";
+  console.log(userName);
   return (
     <Navbar className="bg-body-tertiary" style={{ backgroundColor: "#FFF5E0" }}>
       <button
@@ -45,7 +49,7 @@ function DashboardNavbar({ isOpen, toggleSidebar, userData }) {
 
           {/* Show only the username on larger screens */}
           <div className="d-none d-md-block">
-            Signed in as: {userData.userName}
+            Signed in as: {userName}
           </div>
         </Navbar.Collapse>
       </Container>

@@ -137,7 +137,7 @@ const EditTransaction = () => {
           <DashboardNavbar
             isOpen={isOpen}
             toggleSidebar={toggleSidebar}
-            userData={userData}
+            // userData={userData}
           />
 
           <div className="container-fluid register" style={{top:"70px", left:"90px"}}>

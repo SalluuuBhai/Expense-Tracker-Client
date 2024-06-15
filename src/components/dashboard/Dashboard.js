@@ -8,6 +8,8 @@ import { GiReceiveMoney } from "react-icons/gi";
 import DashboardNavbar from "./Navbar";
 import DashboardSidebar from "./Sidebar";
 import { PieChart } from "@mui/x-charts/PieChart";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../features/user/userSlice";
 
 function DashboardLayout() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +18,8 @@ function DashboardLayout() {
   const [totalIncome, setTotalIncome] = useState(0);
   const [totalExpense, setTotalExpense] = useState(0);
   const [totalBalance, setTotalBalance] = useState(0);
+
+  const dispatch = useDispatch();
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -33,7 +37,9 @@ function DashboardLayout() {
       const response = await axios.get(`${API}/users/getuser`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+      console.log(response.data.user);
       setUserData(response.data.user);
+      dispatch(setUser(response.data.user));
     } catch (error) {
       console.log(error);
     }
@@ -41,7 +47,9 @@ function DashboardLayout() {
 
   const getExpenseData = async () => {
     try {
-      const response = await axios.get(`${API}/expense/view-all-expenses/${userID}`);
+      const response = await axios.get(
+        `${API}/expense/view-all-expenses/${userID}`
+      );
       setExpenseData(response.data.expense);
     } catch (error) {
       console.log(error);
@@ -97,7 +105,7 @@ function DashboardLayout() {
           <DashboardNavbar
             isOpen={isOpen}
             toggleSidebar={toggleSidebar}
-            userData={userData}
+            // userData={userData}
           />
 
           {/* Content */}
@@ -111,8 +119,18 @@ function DashboardLayout() {
                     series={[
                       {
                         data: [
-                          { id: 0, value: totalIncome, label: "Income", color: "#41B06E" },
-                          { id: 1, value: totalExpense, label: "Expense", color: "#E72929" },
+                          {
+                            id: 0,
+                            value: totalIncome,
+                            label: "Income",
+                            color: "#41B06E",
+                          },
+                          {
+                            id: 1,
+                            value: totalExpense,
+                            label: "Expense",
+                            color: "#E72929",
+                          },
                         ],
                       },
                     ]}
@@ -216,17 +234,26 @@ function DashboardLayout() {
                             >
                               {expense.category === "Income" ? (
                                 <GiReceiveMoney
-                                  style={{ marginRight: "10px", fontSize:"27px" }}
+                                  style={{
+                                    marginRight: "10px",
+                                    fontSize: "27px",
+                                  }}
                                 />
                               ) : (
-                                <GiPayMoney style={{ marginRight: "10px", fontSize:"27px" }} />
+                                <GiPayMoney
+                                  style={{
+                                    marginRight: "10px",
+                                    fontSize: "27px",
+                                  }}
+                                />
                               )}
                               <h5 style={{ fontWeight: "bold" }}>
                                 {expense.title}
                               </h5>
                             </div>
-                            <p style={{ fontWeight: "bold" }}>{expense.category === "Income" ? "+ " : "- "}{" "}
-                            &#x20B9; {expense.amount}
+                            <p style={{ fontWeight: "bold" }}>
+                              {expense.category === "Income" ? "+ " : "- "}{" "}
+                              &#x20B9; {expense.amount}
                             </p>
                           </div>
                         </li>

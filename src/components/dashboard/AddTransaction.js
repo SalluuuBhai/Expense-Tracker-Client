@@ -112,7 +112,7 @@ const AddTransaction = () => {
           <DashboardNavbar
             isOpen={isOpen}
             toggleSidebar={toggleSidebar}
-            userData={userData}
+            // userData={userData}
           />
 
           {/* Content */}
